@@ -10,9 +10,10 @@ namespace EDDemo.Estructuras_No_Lineales
 {
     public class ArbolBusqueda
     {
-        NodoBinario Raiz;
+        public NodoBinario Raiz;
         public String strArbol;
         public String strRecorrido;
+        public bool enc= false;
 
         public ArbolBusqueda()
         {
@@ -122,6 +123,148 @@ namespace EDDemo.Estructuras_No_Lineales
 
             return;
          }
+        public void BuscarNodo(NodoBinario nodo, int valor)
+        {
+            if (nodo == null || enc)
+                return;
+
+
+            if (nodo.Dato == valor)
+            {
+                enc = true;
+                return;
+            }
+            BuscarNodo(nodo.Izq, valor);
+            BuscarNodo(nodo.Der, valor);
+        }
+
+        public void podararbol(ref NodoBinario nodo)
+        {
+            if (nodo == null)
+                return;
+
+            podararbol(ref nodo.Izq);
+            podararbol(ref nodo.Der);
+            nodo = null;
+            return;
+        }
+
+        public NodoBinario buscaMayor( NodoBinario nodo)
+        {
+            if(nodo == null)
+            {
+                return null;
+            }
+            else
+            {
+                if (nodo.Der == null)
+                    return nodo;
+                else 
+                    return buscaMayor( nodo.Der);
+            }
+        }
+        public NodoBinario BusacaMenor( NodoBinario nodo)
+        {
+            if (nodo == null)
+                return null;
+            else if (nodo.Izq == null)
+                return nodo;
+            else 
+                return BusacaMenor(nodo.Izq);
+        }
+
+        public void eliminarPredesor(int x, NodoBinario nodo)
+        {
+            if (nodo == null)
+                return;
+            else if (x<nodo.Dato)
+                eliminarPredesor(x, nodo.Izq);
+            else if (x>nodo.Dato) 
+                eliminarPredesor(x,  nodo.Der);
+            else if (nodo.Izq !=null && nodo.Der!=null)
+            {
+                // tiene hijos
+              NodoBinario mayor  = buscaMayor( nodo.Izq);
+              nodo.Dato = mayor.Dato;
+                eliminarPredesor(mayor.Dato, nodo.Izq);
+            }
+            else
+            {
+                //tiene un solo hijo o ninguno
+                NodoBinario temp = nodo;
+                if (nodo.Izq == null)
+                    nodo = nodo.Der;
+                else if (nodo.Der ==null)
+                    nodo = nodo.Izq;
+                //eliminar el nodo
+                temp = null;
+            }
+
+        }
+
+        public void eliminarsucesor (int x , NodoBinario nodo)
+        {
+            if (nodo==null)
+                return;
+            else if(x<nodo.Dato)
+                eliminarPredesor(x,nodo.Izq);
+            else if (x>nodo.Dato)
+                eliminarPredesor(x,nodo.Der);
+            else if (nodo.Izq!=null && nodo.Der!=null)
+            {
+                //tiene 2 hijos 
+                NodoBinario menor = BusacaMenor( nodo.Der);
+                nodo.Dato= menor.Dato;
+                eliminarsucesor(menor.Dato, nodo.Der);
+
+            }
+            else
+            {
+                //tiene un solo hijo 
+                NodoBinario temp = nodo;
+                if (nodo.Izq == null)
+                    nodo= nodo.Der;
+                else if(nodo.Der ==null)
+                    nodo=nodo.Izq;
+                //eliminar nodohoja
+                temp=null;
+            }
+        }
+        public int Altura()
+        {
+            return altura(Raiz);
+        }
+        public int altura(NodoBinario nodo)
+        {
+            if (nodo==null)
+                return 0;
+            return(1+Math.Max(altura(nodo.Izq),altura(nodo.Der)));
+        }
+        public int Contar()
+        {
+            return contarHojas(Raiz);
+        }
+        int contarHojas(NodoBinario nodo)
+        {
+            if(nodo==null)
+                return 0;
+            if (nodo.Der==null && nodo.Izq==null)
+                return 1;
+            else 
+                return contarHojas(nodo.Der)+contarHojas(nodo.Der);
+        }
+        public int contnod()
+        {
+            return contarNodos(Raiz);
+        }
+        int contarNodos(NodoBinario nodo)
+        {
+            if (nodo==null)
+                return 0;
+            return 1 + contarNodos(nodo.Izq)+contarNodos(nodo.Der) ;
+        }
 
     }
 }
+    
+

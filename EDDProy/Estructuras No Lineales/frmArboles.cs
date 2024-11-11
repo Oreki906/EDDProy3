@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -179,5 +180,89 @@ namespace EDDemo.Estructuras_No_Lineales
             txtDato.Text = "";
         }
 
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtDato.Text, out int busc))
+            {
+                miArbol.enc = false;
+                miArbol.BuscarNodo(miArbol.Raiz, busc);
+
+                if (miArbol.enc)
+                    MessageBox.Show("el nodo fue encontrado");
+                else
+                {
+                    MessageBox.Show("no se ha encontrado el nodo");
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("ingrese un dato valido");
+            }
+        }
+
+        private void btnPodar_Click(object sender, EventArgs e)
+        {
+            miRaiz = miArbol.RegresaRaiz();
+
+            if (miRaiz == null)
+            {
+                MessageBox.Show("El árbol está vacío");
+                return;
+            }
+
+            // Llama al método para podar el árbol
+            miArbol.podararbol(ref miRaiz);
+
+            // Actualiza la raíz en la clase ArbolBusqueda
+            miArbol.Raiz = miRaiz;
+
+            MessageBox.Show("El árbol ha sido podado");
+        }
+
+        private void btnelimpred_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtDato.Text, out int valor))
+            {
+                miArbol.eliminarPredesor(valor, miArbol.Raiz);
+                MessageBox.Show("el dato " + valor + " se ha eliminado ");
+
+
+            }
+            else
+                MessageBox.Show("ingresde un numero valido");
+        }
+
+        private void btnelimsuces_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtDato.Text, out int valor))
+            {
+                miArbol.eliminarsucesor(valor, miArbol.Raiz);
+                MessageBox.Show("el dato " + valor + " se ha eliminado");
+
+            }
+            else
+                MessageBox.Show("ingrese un numero valido");
+        }
+
+        private void Altura_Click(object sender, EventArgs e)
+        {
+            int altura = miArbol.Altura();
+            MessageBox.Show("la altura es " + altura);
+
+        }
+
+        private void btncontho_Click(object sender, EventArgs e)
+        {
+            int hojas = miArbol.Contar();
+            MessageBox.Show("el arbol tiene " + hojas + " hojas");
+        }
+
+        private void btnContnod_Click(object sender, EventArgs e)
+        {
+            int nodos = miArbol.contnod();
+            MessageBox.Show("hay " + nodos + " nodos ");
+        }
     }
 }
