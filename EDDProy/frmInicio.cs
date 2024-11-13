@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EDDemo.Estructuras_Lineales;
 using EDDemo.Estructuras_No_Lineales;
 
 namespace EDDemo
@@ -45,6 +46,34 @@ namespace EDDemo
             frmArboles mArboles = new frmArboles();
             mArboles.MdiParent = this;
             mArboles.Show();
+        }
+
+        private void listaDobleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmlistaDoble A = new frmlistaDoble();
+            A.MdiParent = this;
+            A.Show();
+        }
+
+        private void circularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCircular mCircular = new frmCircular();
+            mCircular.MdiParent = this;
+            mCircular.Show();
+        }
+
+        private void circularDobleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            circularDoble   b = new circularDoble();
+            b.MdiParent = this;
+            b.Show();
+        }
+
+        private void colasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCola mCola = new frmCola();
+            mCola.MdiParent = this;
+            mCola.Show();
         }
     }
 }

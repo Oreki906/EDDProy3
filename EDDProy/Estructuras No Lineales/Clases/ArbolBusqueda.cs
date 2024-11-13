@@ -5,6 +5,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EDDemo.Estructuras_Lineales.Clases;
 
 namespace EDDemo.Estructuras_No_Lineales
 {
@@ -13,7 +14,8 @@ namespace EDDemo.Estructuras_No_Lineales
         public NodoBinario Raiz;
         public String strArbol;
         public String strRecorrido;
-        public bool enc= false;
+        public bool enc = false;
+        Cola col = new Cola();
 
         public ArbolBusqueda()
         {
@@ -35,7 +37,7 @@ namespace EDDemo.Estructuras_No_Lineales
         }
 
         public void InsertaNodo(int Dato, ref NodoBinario Nodo)
-        {            
+        {
             if (Nodo == null)
             {
                 Nodo = new NodoBinario(Dato);
@@ -47,14 +49,14 @@ namespace EDDemo.Estructuras_No_Lineales
             else if (Dato < Nodo.Dato)
                 InsertaNodo(Dato, ref Nodo.Izq);
             else if (Dato > Nodo.Dato)
-                InsertaNodo(Dato, ref Nodo.Der);          
+                InsertaNodo(Dato, ref Nodo.Der);
         }
-        public void MuestraArbolAcostado(int nivel, NodoBinario nodo )
+        public void MuestraArbolAcostado(int nivel, NodoBinario nodo)
         {
             if (nodo == null)
                 return;
             MuestraArbolAcostado(nivel + 1, nodo.Der);
-            for(int i=0; i<nivel; i++)
+            for (int i = 0; i < nivel; i++)
             {
                 strArbol = strArbol + "      ";
             }
@@ -62,7 +64,7 @@ namespace EDDemo.Estructuras_No_Lineales
             MuestraArbolAcostado(nivel + 1, nodo.Izq);
         }
 
-        public  String ToDot(NodoBinario nodo)
+        public String ToDot(NodoBinario nodo)
         {
             StringBuilder b = new StringBuilder();
             if (nodo.Izq != null)
@@ -97,7 +99,7 @@ namespace EDDemo.Estructuras_No_Lineales
             strRecorrido = strRecorrido + nodo.Dato + ", ";
             PreOrden(nodo.Izq);
             PreOrden(nodo.Der);
-            
+
             return;
         }
 
@@ -112,7 +114,7 @@ namespace EDDemo.Estructuras_No_Lineales
 
             return;
         }
-        public void PostOrden(NodoBinario nodo )
+        public void PostOrden(NodoBinario nodo)
         {
             if (nodo == null)
                 return;
@@ -122,7 +124,26 @@ namespace EDDemo.Estructuras_No_Lineales
             strRecorrido = strRecorrido + nodo.Dato + ", ";
 
             return;
-         }
+        }
+        public void Niveles(NodoBinario nodo)
+        {
+            if (nodo == null)
+                return;
+
+            Cola colaAuxiliar = new Cola();
+            colaAuxiliar.enqueue(nodo);
+            while (!colaAuxiliar.IsEmpty())
+            {
+                NodoBinario nodoAuxiliar = colaAuxiliar.Dequeue();
+                strRecorrido = strRecorrido + nodoAuxiliar.Dato + ", ";
+
+                if (nodoAuxiliar.Izq != null)
+                    colaAuxiliar.enqueue(nodoAuxiliar.Izq);
+
+                if (nodoAuxiliar.Der != null)
+                    colaAuxiliar.enqueue(nodoAuxiliar.Der);
+            }
+        }
         public void BuscarNodo(NodoBinario nodo, int valor)
         {
             if (nodo == null || enc)
@@ -138,6 +159,7 @@ namespace EDDemo.Estructuras_No_Lineales
             BuscarNodo(nodo.Der, valor);
         }
 
+
         public void podararbol(ref NodoBinario nodo)
         {
             if (nodo == null)
@@ -149,9 +171,9 @@ namespace EDDemo.Estructuras_No_Lineales
             return;
         }
 
-        public NodoBinario buscaMayor( NodoBinario nodo)
+        public NodoBinario buscaMayor(NodoBinario nodo)
         {
-            if(nodo == null)
+            if (nodo == null)
             {
                 return null;
             }
@@ -159,17 +181,17 @@ namespace EDDemo.Estructuras_No_Lineales
             {
                 if (nodo.Der == null)
                     return nodo;
-                else 
-                    return buscaMayor( nodo.Der);
+                else
+                    return buscaMayor(nodo.Der);
             }
         }
-        public NodoBinario BusacaMenor( NodoBinario nodo)
+        public NodoBinario BusacaMenor(NodoBinario nodo)
         {
             if (nodo == null)
                 return null;
             else if (nodo.Izq == null)
                 return nodo;
-            else 
+            else
                 return BusacaMenor(nodo.Izq);
         }
 
@@ -177,15 +199,15 @@ namespace EDDemo.Estructuras_No_Lineales
         {
             if (nodo == null)
                 return;
-            else if (x<nodo.Dato)
+            else if (x < nodo.Dato)
                 eliminarPredesor(x, nodo.Izq);
-            else if (x>nodo.Dato) 
-                eliminarPredesor(x,  nodo.Der);
-            else if (nodo.Izq !=null && nodo.Der!=null)
+            else if (x > nodo.Dato)
+                eliminarPredesor(x, nodo.Der);
+            else if (nodo.Izq != null && nodo.Der != null)
             {
                 // tiene hijos
-              NodoBinario mayor  = buscaMayor( nodo.Izq);
-              nodo.Dato = mayor.Dato;
+                NodoBinario mayor = buscaMayor(nodo.Izq);
+                nodo.Dato = mayor.Dato;
                 eliminarPredesor(mayor.Dato, nodo.Izq);
             }
             else
@@ -194,7 +216,7 @@ namespace EDDemo.Estructuras_No_Lineales
                 NodoBinario temp = nodo;
                 if (nodo.Izq == null)
                     nodo = nodo.Der;
-                else if (nodo.Der ==null)
+                else if (nodo.Der == null)
                     nodo = nodo.Izq;
                 //eliminar el nodo
                 temp = null;
@@ -202,19 +224,19 @@ namespace EDDemo.Estructuras_No_Lineales
 
         }
 
-        public void eliminarsucesor (int x , NodoBinario nodo)
+        public void eliminarsucesor(int x, NodoBinario nodo)
         {
-            if (nodo==null)
+            if (nodo == null)
                 return;
-            else if(x<nodo.Dato)
-                eliminarPredesor(x,nodo.Izq);
-            else if (x>nodo.Dato)
-                eliminarPredesor(x,nodo.Der);
-            else if (nodo.Izq!=null && nodo.Der!=null)
+            else if (x < nodo.Dato)
+                eliminarPredesor(x, nodo.Izq);
+            else if (x > nodo.Dato)
+                eliminarPredesor(x, nodo.Der);
+            else if (nodo.Izq != null && nodo.Der != null)
             {
                 //tiene 2 hijos 
-                NodoBinario menor = BusacaMenor( nodo.Der);
-                nodo.Dato= menor.Dato;
+                NodoBinario menor = BusacaMenor(nodo.Der);
+                nodo.Dato = menor.Dato;
                 eliminarsucesor(menor.Dato, nodo.Der);
 
             }
@@ -223,11 +245,11 @@ namespace EDDemo.Estructuras_No_Lineales
                 //tiene un solo hijo 
                 NodoBinario temp = nodo;
                 if (nodo.Izq == null)
-                    nodo= nodo.Der;
-                else if(nodo.Der ==null)
-                    nodo=nodo.Izq;
+                    nodo = nodo.Der;
+                else if (nodo.Der == null)
+                    nodo = nodo.Izq;
                 //eliminar nodohoja
-                temp=null;
+                temp = null;
             }
         }
         public int Altura()
@@ -236,9 +258,9 @@ namespace EDDemo.Estructuras_No_Lineales
         }
         public int altura(NodoBinario nodo)
         {
-            if (nodo==null)
+            if (nodo == null)
                 return 0;
-            return(1+Math.Max(altura(nodo.Izq),altura(nodo.Der)));
+            return (1 + Math.Max(altura(nodo.Izq), altura(nodo.Der)));
         }
         public int Contar()
         {
@@ -246,12 +268,12 @@ namespace EDDemo.Estructuras_No_Lineales
         }
         int contarHojas(NodoBinario nodo)
         {
-            if(nodo==null)
+            if (nodo == null)
                 return 0;
-            if (nodo.Der==null && nodo.Izq==null)
+            if (nodo.Der == null && nodo.Izq == null)
                 return 1;
-            else 
-                return contarHojas(nodo.Der)+contarHojas(nodo.Der);
+            else
+                return contarHojas(nodo.Der) + contarHojas(nodo.Der);
         }
         public int contnod()
         {
@@ -259,12 +281,72 @@ namespace EDDemo.Estructuras_No_Lineales
         }
         int contarNodos(NodoBinario nodo)
         {
-            if (nodo==null)
+            if (nodo == null)
                 return 0;
-            return 1 + contarNodos(nodo.Izq)+contarNodos(nodo.Der) ;
+            return 1 + contarNodos(nodo.Izq) + contarNodos(nodo.Der);
         }
+        
 
+        bool lleno(NodoBinario nodo)
+        {
+            if (nodo == null)
+                return true; // un nodo vacio es lleno 
+            //es una hoja
+            if (nodo.Der == null && nodo.Izq == null)
+                return true;
+            //si tiene ambos hijos, revicemos que los dos sub nodos esten llenos
+            if(nodo.Der !=null && nodo.Izq!=null)
+                return (lleno(nodo.Izq)&&lleno(nodo.Der));
+            return false;
+        }
+        public bool llen()
+        {
+            return lleno(Raiz);
+        }
+        public bool completo (NodoBinario nodo)
+        {
+            if (nodo == null)
+                return true;
+
+            Cola colaAuxiliar = new Cola();
+            colaAuxiliar.enqueue(nodo);
+            bool nodolleno=false;
+
+            while (!colaAuxiliar.IsEmpty())
+            {
+                NodoBinario nodoAuxiliar = colaAuxiliar.Dequeue();
+                if (nodoAuxiliar.Izq != null)
+                {
+
+               
+                if (nodolleno)
+                    return false;
+
+                colaAuxiliar.enqueue(nodoAuxiliar.Izq);
+                }
+                else
+                {
+                    nodolleno = true;
+                }
+                if (nodoAuxiliar.Der != null)
+                {
+                    if(nodolleno)
+                        return false;
+                    colaAuxiliar.enqueue(nodoAuxiliar.Der);
+                }
+                else
+                {
+                    nodolleno = true;
+                }
+            }
+            return true;
+        }
+       public bool comp()
+        {
+            return completo(Raiz);
+        }
     }
+
 }
     
 

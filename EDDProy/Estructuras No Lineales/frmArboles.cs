@@ -26,6 +26,7 @@ namespace EDDemo.Estructuras_No_Lineales
     {
         ArbolBusqueda miArbol;
         NodoBinario miRaiz;
+        
 
         public frmArboles()
         {
@@ -141,13 +142,29 @@ namespace EDDemo.Estructuras_No_Lineales
             miRaiz = miArbol.RegresaRaiz();
             miArbol.strRecorrido = "";
 
-            if (miRaiz == null) {
+            if (miRaiz == null)
+            {
                 lblRecorridoPostOrden.Text = "El arbol esta vacio";
                 return;
             }
-            lblRecorridoPostOrden.Text = ""; 
+            lblRecorridoPostOrden.Text = "";
             miArbol.PostOrden(miRaiz);
             lblRecorridoPostOrden.Text = miArbol.strRecorrido;
+        
+
+
+        miRaiz = miArbol.RegresaRaiz();
+            miArbol.strRecorrido = "";
+
+            if (miRaiz == null)
+            {
+                lblRecorridoPreOrden.Text = "El arbol esta vacio";
+                return;
+            }
+            lblrecorridoniveles.Text = "";
+            miArbol.Niveles(miRaiz);
+
+            lblrecorridoniveles.Text = miArbol.strRecorrido;
         }
 
         private void btnCrearArbol_Click(object sender, EventArgs e)
@@ -263,6 +280,60 @@ namespace EDDemo.Estructuras_No_Lineales
         {
             int nodos = miArbol.contnod();
             MessageBox.Show("hay " + nodos + " nodos ");
+        }
+
+        
+
+        private void lblrecorridoniveles_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmArboles_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btncompleto_Click(object sender, EventArgs e)
+        {
+            bool com = miArbol.comp();
+            if (com==true)
+            {
+                MessageBox.Show("el arbol esta completo");
+            }
+            else
+            {
+                MessageBox.Show("el arbol no esta completo");
+            }
+        }
+
+        private void btnlleno_Click_1(object sender, EventArgs e)
+        {
+ bool yeno = miArbol.llen();
+            if (yeno==true)
+            {
+                MessageBox.Show("el arbol esta lleno");
+            }
+            else
+            {
+                MessageBox.Show("el no esta lleno");
+            }
+
+        }
+
+        private void lblRecorridoPreOrden_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRecorridoPreOrden_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
