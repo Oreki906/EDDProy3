@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EDDemo.Estructuras_Lineales;
 using EDDemo.Estructuras_No_Lineales;
+using EDDemo.Metodos_de_ordenamiento;
 
 namespace EDDemo
 {
@@ -74,6 +75,13 @@ namespace EDDemo
             frmCola mCola = new frmCola();
             mCola.MdiParent = this;
             mCola.Show();
+        }
+
+        private void burbujaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmOrdenamiento orden = new FrmOrdenamiento();
+            orden.MdiParent = this;
+            orden.Show();
         }
     }
 }

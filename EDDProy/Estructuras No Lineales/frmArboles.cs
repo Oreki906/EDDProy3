@@ -291,7 +291,7 @@ namespace EDDemo.Estructuras_No_Lineales
 
         private void frmArboles_Load(object sender, EventArgs e)
         {
-
+        
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -332,6 +332,16 @@ namespace EDDemo.Estructuras_No_Lineales
         }
 
         private void lblRecorridoPreOrden_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDato_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNodos_ValueChanged(object sender, EventArgs e)
         {
 
         }

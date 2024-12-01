@@ -69,6 +69,7 @@ namespace EDDemo.Estructuras_No_Lineales
             this.txtDato.Name = "txtDato";
             this.txtDato.Size = new System.Drawing.Size(68, 31);
             this.txtDato.TabIndex = 0;
+            this.txtDato.TextChanged += new System.EventHandler(this.txtDato_TextChanged);
             // 
             // btnAgregar
             // 
@@ -169,6 +170,7 @@ namespace EDDemo.Estructuras_No_Lineales
             0,
             0,
             0});
+            this.txtNodos.ValueChanged += new System.EventHandler(this.txtNodos_ValueChanged);
             // 
             // lblrecorridoniveles
             // 
@@ -378,7 +380,6 @@ namespace EDDemo.Estructuras_No_Lineales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::EDDemo.Properties.Resources.fondo2;
             this.ClientSize = new System.Drawing.Size(1177, 850);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btncompleto);

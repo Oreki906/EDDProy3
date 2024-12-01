@@ -134,6 +134,13 @@
       <DependentUpon>frmPilas.cs</DependentUpon>
     </Compile>
     <Compile Include="Graphviz.cs" />
+    <Compile Include="Metodos de ordenamiento\Clases.cs" />
+    <Compile Include="Metodos de ordenamiento\FrmOrdenamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodos de ordenamiento\FrmOrdenamiento.Designer.cs">
+      <DependentUpon>FrmOrdenamiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Estructuras Lineales\circularDoble.resx">
@@ -159,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Estructuras Lineales\frmPilas.resx">
       <DependentUpon>frmPilas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodos de ordenamiento\FrmOrdenamiento.resx">
+      <DependentUpon>FrmOrdenamiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -488,5 +498,6 @@
     <None Include="img\fondo1.jpg" />
     <None Include="img\fondo2.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
