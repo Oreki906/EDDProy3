@@ -27,10 +27,30 @@ namespace EDDemo.Metodos_de_ordenamiento
                     }
                 }
             }
-            
+   
             
         
         
+        }
+        public void ShellSort(int[] array)
+        {
+            int n= array.Length;
+
+            for(int x = n / 2; x > 0; x /= 2)
+            {
+                for (int i = x; i < n; i++)
+                {
+                    int tem = array[i];
+                    int j = i;
+
+                    while (j >= x && array[j - x] > tem)
+                    {
+                        array[j]=array[j - x];
+                        j -= x;
+                    }
+                    array[j] = tem;
+                }
+            }
         }
 
 

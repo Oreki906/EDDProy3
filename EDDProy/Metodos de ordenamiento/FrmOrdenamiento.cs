@@ -107,5 +107,19 @@ namespace EDDemo.Metodos_de_ordenamiento
                 MessageBox.Show("ingrese un numero valido");
             }
         }
+
+        private void btnShell_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clas.ShellSort(array);
+                MessageBox.Show("ordenado correctamente");
+                mostrar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

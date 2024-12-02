@@ -33,6 +33,7 @@
             this.lbOrden = new System.Windows.Forms.ListBox();
             this.cbnumb = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnShell = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCrearLista
@@ -41,7 +42,7 @@
             this.btnCrearLista.Name = "btnCrearLista";
             this.btnCrearLista.Size = new System.Drawing.Size(149, 43);
             this.btnCrearLista.TabIndex = 10;
-            this.btnCrearLista.Text = "button1";
+            this.btnCrearLista.Text = "Burbuja";
             this.btnCrearLista.UseVisualStyleBackColor = true;
             this.btnCrearLista.Click += new System.EventHandler(this.btnCrearLista_Click);
             // 
@@ -77,26 +78,37 @@
             // 
             // cbnumb
             // 
-            this.cbnumb.Location = new System.Drawing.Point(159, 60);
+            this.cbnumb.Location = new System.Drawing.Point(127, 60);
             this.cbnumb.Name = "cbnumb";
             this.cbnumb.Size = new System.Drawing.Size(98, 22);
             this.cbnumb.TabIndex = 14;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(221, 242);
+            this.btnAgregar.Location = new System.Drawing.Point(242, 56);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(78, 26);
             this.btnAgregar.TabIndex = 15;
-            this.btnAgregar.Text = "button1";
+            this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnShell
+            // 
+            this.btnShell.Location = new System.Drawing.Point(231, 316);
+            this.btnShell.Name = "btnShell";
+            this.btnShell.Size = new System.Drawing.Size(121, 43);
+            this.btnShell.TabIndex = 16;
+            this.btnShell.Text = "Shell sort";
+            this.btnShell.UseVisualStyleBackColor = true;
+            this.btnShell.Click += new System.EventHandler(this.btnShell_Click);
             // 
             // FrmOrdenamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnShell);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.cbnumb);
             this.Controls.Add(this.lbOrden);
@@ -116,5 +128,6 @@
         private System.Windows.Forms.ListBox lbOrden;
         private System.Windows.Forms.TextBox cbnumb;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnShell;
     }
 }
