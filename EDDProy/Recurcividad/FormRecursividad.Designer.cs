@@ -41,6 +41,11 @@
             this.btnSuma = new System.Windows.Forms.Button();
             this.btnTamano = new System.Windows.Forms.Button();
             this.btnFibo = new System.Windows.Forms.Button();
+            this.lblObj = new System.Windows.Forms.Label();
+            this.cbObjetivo = new System.Windows.Forms.ComboBox();
+            this.btnBusqueda = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btTorre = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbDato1
@@ -164,11 +169,62 @@
             this.btnFibo.UseVisualStyleBackColor = true;
             this.btnFibo.Click += new System.EventHandler(this.btnFibo_Click);
             // 
+            // lblObj
+            // 
+            this.lblObj.AutoSize = true;
+            this.lblObj.Location = new System.Drawing.Point(61, 243);
+            this.lblObj.Name = "lblObj";
+            this.lblObj.Size = new System.Drawing.Size(51, 16);
+            this.lblObj.TabIndex = 13;
+            this.lblObj.Text = "busco?";
+            // 
+            // cbObjetivo
+            // 
+            this.cbObjetivo.FormattingEnabled = true;
+            this.cbObjetivo.Location = new System.Drawing.Point(61, 263);
+            this.cbObjetivo.Name = "cbObjetivo";
+            this.cbObjetivo.Size = new System.Drawing.Size(50, 24);
+            this.cbObjetivo.TabIndex = 14;
+            // 
+            // btnBusqueda
+            // 
+            this.btnBusqueda.Location = new System.Drawing.Point(622, 50);
+            this.btnBusqueda.Name = "btnBusqueda";
+            this.btnBusqueda.Size = new System.Drawing.Size(96, 27);
+            this.btnBusqueda.TabIndex = 15;
+            this.btnBusqueda.Text = "busqueda binaria";
+            this.btnBusqueda.UseVisualStyleBackColor = true;
+            this.btnBusqueda.Click += new System.EventHandler(this.btnBusqueda_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(434, 181);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(220, 164);
+            this.listBox1.TabIndex = 16;
+            // 
+            // btTorre
+            // 
+            this.btTorre.Location = new System.Drawing.Point(51, 96);
+            this.btTorre.Name = "btTorre";
+            this.btTorre.Size = new System.Drawing.Size(102, 34);
+            this.btTorre.TabIndex = 17;
+            this.btTorre.Text = "hanoi";
+            this.btTorre.UseVisualStyleBackColor = true;
+            this.btTorre.Click += new System.EventHandler(this.btTorre_Click);
+            // 
             // FormRecursividad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.Controls.Add(this.btTorre);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.btnBusqueda);
+            this.Controls.Add(this.cbObjetivo);
+            this.Controls.Add(this.lblObj);
             this.Controls.Add(this.btnFibo);
             this.Controls.Add(this.btnTamano);
             this.Controls.Add(this.btnSuma);
@@ -204,5 +260,10 @@
         private System.Windows.Forms.Button btnSuma;
         private System.Windows.Forms.Button btnTamano;
         private System.Windows.Forms.Button btnFibo;
+        private System.Windows.Forms.Label lblObj;
+        private System.Windows.Forms.ComboBox cbObjetivo;
+        private System.Windows.Forms.Button btnBusqueda;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btTorre;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,11 @@ namespace EDDemo.Recurcividad
             btnCalcular.Visible = false;
             btnAgregar.Visible = false;
             btnTamano.Visible = false;
+            lblObj.Visible = false;
+            cbObjetivo.Visible = false;
+
         }
+
 
         private void btnExponente_Click(object sender, EventArgs e)
         {
@@ -30,12 +35,16 @@ namespace EDDemo.Recurcividad
             lblVariable2.Text = ("");
             lblVariable2.Text = ("exponente");
             btnCalcular.Visible = true;
-            lblVariable2.Visible=true;
+            lblVariable2.Visible = true;
             cbDato2.Visible = true;
             btnTamano.Visible = false;
             btnAgregar.Visible = false;
+            cbObjetivo.Visible = false;
+            lblObj.Visible = false;
+
             btnCalcular.Click -= btnCalcular_Click;
             btnCalcular.Click += (s, args) => exponente();
+
         }
 
         private void btnFactorial_Click(object sender, EventArgs e)
@@ -45,11 +54,13 @@ namespace EDDemo.Recurcividad
             lblVariable2.Visible = false;
             cbDato2.Visible = false;
             btnCalcular.Visible = true;
-            
-            btnCalcular.Click-=btnCalcular_Click;
-            btnCalcular.Click +=(s,args)=>factorial();
-            btnTamano.Visible=false;
+
+            btnCalcular.Click -= btnCalcular_Click;
+            btnCalcular.Click += (s, args) => factorial();
+            btnTamano.Visible = false;
             btnAgregar.Visible = false;
+            cbObjetivo.Visible = false;
+            lblObj.Visible = false;
 
         }
 
@@ -59,15 +70,15 @@ namespace EDDemo.Recurcividad
         }
 
         public void exponente()
-            {
+        {
             if (int.TryParse(cbDato1.Text, out int b))
             {
-                if(int.TryParse(cbDato2.Text, out int expo))
+                if (int.TryParse(cbDato2.Text, out int expo))
                 {
                     double resltado = metodos.Exponente(b, expo);
                     try
                     {
-                        double resultado = metodos.Exponente(b,expo);
+                        double resultado = metodos.Exponente(b, expo);
                         lblMostrar.Text = ("el resultado es " + resultado);
                     }
                     catch (Exception ex)
@@ -224,6 +235,85 @@ namespace EDDemo.Recurcividad
             btnCalcular.Click += (s, args) => fib();
             btnTamano.Visible = false;
             btnAgregar.Visible = false;
+            cbObjetivo.Visible = false;
+            lblObj.Visible = false;
+        }
+
+        private void Buscar()
+        {
+            {
+                if (array == null || actual == 0)
+                {
+                    MessageBox.Show("El arreglo no está definido o está vacío.");
+                    return;
+                }
+
+                if (!int.TryParse(cbObjetivo.Text, out int objetivo))
+                {
+                    MessageBox.Show("Por favor, ingrese un número válido para buscar.");
+                    return;
+                }
+
+                try
+                {
+                    // Asegúrate de que el arreglo esté ordenado antes de la búsqueda binaria
+                    Array.Sort(array, 0, actual);
+                    int resultado = metodos.BusquedaBinaria(array, 0, actual - 1, objetivo);
+
+                    if (resultado != -1)
+                        lblMostrar.Text = $"El número {objetivo} está en la posición {resultado} del arreglo ordenado.";
+                    else
+                        lblMostrar.Text = $"El número {objetivo} no está en el arreglo.";
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error durante la búsqueda: {ex.Message}");
+                }
+            }
+        }
+
+        private void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            lblVariable1.Text = ("");
+            lblVariable1.Text = ("tamano");
+            lblVariable2.Text = ("");
+            lblVariable2.Text = ("numero y busqueda");
+            btnCalcular.Visible = true;
+            lblVariable2.Visible = true;
+            cbDato2.Visible = true;
+            btnTamano.Visible = true;
+            btnAgregar.Visible = true;
+            btnCalcular.Click -= btnCalcular_Click;
+            btnCalcular.Click += (s, args) => Buscar();
+            cbObjetivo.Visible = true;
+            lblObj.Visible = true;
+        }
+        private void hanoi()
+        {
+            {
+                if (int.TryParse(cbDato1.Text, out int numeroDeDiscos))
+                {
+                    if (numeroDeDiscos > 0)
+                    {
+                        metodos.Hanoi(numeroDeDiscos, listBox1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese un número de discos mayor a 0.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un número válido.");
+                }
+            }
+        }
+
+        private void btTorre_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
