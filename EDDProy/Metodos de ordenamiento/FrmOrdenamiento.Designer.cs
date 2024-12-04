@@ -34,6 +34,8 @@
             this.cbnumb = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnShell = new System.Windows.Forms.Button();
+            this.btnQuickSort = new System.Windows.Forms.Button();
+            this.btnRadix = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCrearLista
@@ -103,11 +105,33 @@
             this.btnShell.UseVisualStyleBackColor = true;
             this.btnShell.Click += new System.EventHandler(this.btnShell_Click);
             // 
+            // btnQuickSort
+            // 
+            this.btnQuickSort.Location = new System.Drawing.Point(399, 321);
+            this.btnQuickSort.Name = "btnQuickSort";
+            this.btnQuickSort.Size = new System.Drawing.Size(162, 37);
+            this.btnQuickSort.TabIndex = 17;
+            this.btnQuickSort.Text = "QuickSort";
+            this.btnQuickSort.UseVisualStyleBackColor = true;
+            this.btnQuickSort.Click += new System.EventHandler(this.btnQuickSort_Click);
+            // 
+            // btnRadix
+            // 
+            this.btnRadix.Location = new System.Drawing.Point(602, 321);
+            this.btnRadix.Name = "btnRadix";
+            this.btnRadix.Size = new System.Drawing.Size(148, 37);
+            this.btnRadix.TabIndex = 18;
+            this.btnRadix.Text = "RadixSort";
+            this.btnRadix.UseVisualStyleBackColor = true;
+            this.btnRadix.Click += new System.EventHandler(this.btnRadix_Click);
+            // 
             // FrmOrdenamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRadix);
+            this.Controls.Add(this.btnQuickSort);
             this.Controls.Add(this.btnShell);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.cbnumb);
@@ -129,5 +153,7 @@
         private System.Windows.Forms.TextBox cbnumb;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnShell;
+        private System.Windows.Forms.Button btnQuickSort;
+        private System.Windows.Forms.Button btnRadix;
     }
 }

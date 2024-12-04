@@ -102,10 +102,12 @@ namespace EDDemo.Metodos_de_ordenamiento
 
                 }
             }
+
             else
             {
                 MessageBox.Show("ingrese un numero valido");
             }
+            mostrar();
         }
 
         private void btnShell_Click(object sender, EventArgs e)
@@ -113,6 +115,35 @@ namespace EDDemo.Metodos_de_ordenamiento
             try
             {
                 clas.ShellSort(array);
+                MessageBox.Show("ordenado correctamente");
+                mostrar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnQuickSort_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clas.QuickSort(array, 0, array.Length - 1);
+                MessageBox.Show("ordenado correctamente");
+                mostrar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnRadix_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                clas.RadixSort(array, array.Length);
                 MessageBox.Show("ordenado correctamente");
                 mostrar();
             }

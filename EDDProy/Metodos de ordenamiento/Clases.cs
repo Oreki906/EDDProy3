@@ -52,7 +52,80 @@ namespace EDDemo.Metodos_de_ordenamiento
                 }
             }
         }
+        public void QuickSort(int [] array, int inicio, int fin)
+        {
+            int pivote;
+            if (inicio<fin)
+            {
+                pivote = particionar(array, inicio,fin);
+                QuickSort(array, inicio, pivote - 1);
+                QuickSort(array,pivote+1,fin);
+            }
+        }
+        static int particionar(int[] array, int inicio, int fin)
+        {
+            int pivote = array[fin];  // Elegimos el último elemento como pivote
+            int i = inicio - 1;     // Índice del menor elemento
 
+            for (int j = inicio; j < fin; j++)
+            {
+                if (array[j] <= pivote)
+                {
+                    i++;
+                    // Intercambia elementos
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+
+            // Intercambia el pivote a su posición correcta
+            int tempPivote = array[i + 1];
+            array[i + 1] = array[fin];
+            array[fin] = tempPivote;
+
+            return i + 1; // Retorna la posición del pivote
+        }
+
+
+       public void RadixSort(int[]array, int n)
+        {
+            int m = getMax(array, n);
+            for(int exp =1; m/exp > 0; exp*=10)
+                CountSort(array,n,exp);
+        }
+        
+        public static int getMax(int[]array,int n)
+        {
+            int max = array[0];
+            for(int i = 1; i < n; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                }
+                
+            }
+            return max;
+        }
+        public static void CountSort(int[] array,int n, int exp)
+        {
+            int[]output = new int[n];
+            int[]count = new int[10];
+            for (int i = 0; i < 10; i++)
+                count[i] = 0;
+            for(int i = 0; i < n;i++)
+                count[(array[i]/exp)%10]++;
+            for (int i = 1; i < 10; i++)
+                count[i] += count[i - 1];
+            for(int i = n-1; i >= 0; i--)
+            {
+                output[count[(array[i]/exp)%10]-1] =array[i];
+                count[(array[i] / exp) % 10]--;
+            }
+            for (int i = 0;i < n;i++)
+                array[i] = output[i];
+        }
 
 
 
