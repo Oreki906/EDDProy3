@@ -134,7 +134,7 @@
       <DependentUpon>frmPilas.cs</DependentUpon>
     </Compile>
     <Compile Include="Graphviz.cs" />
-    <Compile Include="Metodos de ordenamiento\Clases.cs" />
+    <Compile Include="Metodos de ordenamiento\internos.cs" />
     <Compile Include="Metodos de ordenamiento\FrmOrdenamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +143,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recurcividad\FormRecursividad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recurcividad\FormRecursividad.Designer.cs">
+      <DependentUpon>FormRecursividad.cs</DependentUpon>
+    </Compile>
     <Compile Include="Recurcividad\metodos.cs" />
     <EmbeddedResource Include="Estructuras Lineales\circularDoble.resx">
       <DependentUpon>circularDoble.cs</DependentUpon>
@@ -181,6 +187,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Recurcividad\FormRecursividad.resx">
+      <DependentUpon>FormRecursividad.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="external\config6">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

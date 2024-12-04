@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EDDemo.Metodos_de_ordenamiento
 {
-    public class Clases
+    public class internos
     {
         //Metodo burbuja 
         public void burbuja(int[] array)

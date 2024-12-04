@@ -41,6 +41,8 @@ namespace EDDemo
             this.arbolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordenamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.burbujaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.recursividadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +52,8 @@ namespace EDDemo
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.estructurasLinealesToolStripMenuItem,
             this.estructurasNoLibealesToolStripMenuItem,
-            this.ordenamientoToolStripMenuItem});
+            this.ordenamientoToolStripMenuItem,
+            this.recursividadToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
@@ -139,9 +142,24 @@ namespace EDDemo
             // burbujaToolStripMenuItem
             // 
             this.burbujaToolStripMenuItem.Name = "burbujaToolStripMenuItem";
-            this.burbujaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.burbujaToolStripMenuItem.Text = "burbuja";
+            this.burbujaToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.burbujaToolStripMenuItem.Text = "internos";
             this.burbujaToolStripMenuItem.Click += new System.EventHandler(this.burbujaToolStripMenuItem_Click);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(598, 0);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(8, 4);
+            this.checkedListBox1.TabIndex = 5;
+            // 
+            // recursividadToolStripMenuItem
+            // 
+            this.recursividadToolStripMenuItem.Name = "recursividadToolStripMenuItem";
+            this.recursividadToolStripMenuItem.Size = new System.Drawing.Size(103, 24);
+            this.recursividadToolStripMenuItem.Text = "recursividad";
+            this.recursividadToolStripMenuItem.Click += new System.EventHandler(this.recursividadToolStripMenuItem_Click);
             // 
             // frmInicio
             // 
@@ -149,6 +167,7 @@ namespace EDDemo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::EDDemo.Properties.Resources.fondo1;
             this.ClientSize = new System.Drawing.Size(1237, 690);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -176,6 +195,8 @@ namespace EDDemo
         private System.Windows.Forms.ToolStripMenuItem circularDobleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordenamientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem burbujaToolStripMenuItem;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.ToolStripMenuItem recursividadToolStripMenuItem;
     }
 }
 

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using EDDemo.Estructuras_Lineales;
 using EDDemo.Estructuras_No_Lineales;
 using EDDemo.Metodos_de_ordenamiento;
+using EDDemo.Recurcividad;
 
 namespace EDDemo
 {
@@ -82,6 +83,13 @@ namespace EDDemo
             FrmOrdenamiento orden = new FrmOrdenamiento();
             orden.MdiParent = this;
             orden.Show();
+        }
+
+        private void recursividadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormRecursividad formRecursividad = new FormRecursividad();
+            formRecursividad.MdiParent = this;
+            formRecursividad.Show();
         }
     }
 }

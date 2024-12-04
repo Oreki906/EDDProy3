@@ -14,7 +14,7 @@ namespace EDDemo.Metodos_de_ordenamiento
 {
     public partial class FrmOrdenamiento : Form
     {
-        public Clases clas = new Clases();
+        public internos clas = new internos();
         public int[] array;
         public int actual = 0;
         public FrmOrdenamiento()
