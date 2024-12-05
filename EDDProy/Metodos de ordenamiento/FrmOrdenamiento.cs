@@ -178,7 +178,7 @@ namespace EDDemo.Metodos_de_ordenamiento
                         MessageBox.Show("Elemento no encontrado.");
                     }
 
-                    // Llama a la función mostrar para actualizar la vista
+                    
                     mostrar();
                 }
                 catch (Exception ex)
@@ -198,7 +198,6 @@ namespace EDDemo.Metodos_de_ordenamiento
             {
                 try
                 {
-                    // Realizar la búsqueda secuencial
                     int indice = clas.BusquedaSecuencial(array, buscado);
 
                     if (indice >= 0)
@@ -210,7 +209,6 @@ namespace EDDemo.Metodos_de_ordenamiento
                         MessageBox.Show("Elemento no encontrado.");
                     }
 
-                    // Actualizar la vista con el método mostrar()
                     mostrar();
                 }
                 catch (Exception ex)

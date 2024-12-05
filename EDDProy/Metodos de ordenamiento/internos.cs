@@ -64,8 +64,8 @@ namespace EDDemo.Metodos_de_ordenamiento
         }
         static int particionar(int[] array, int inicio, int fin)
         {
-            int pivote = array[fin];  // Elegimos el último elemento como pivote
-            int i = inicio - 1;     // Índice del menor elemento
+            int pivote = array[fin];  
+            int i = inicio - 1;     
 
             for (int j = inicio; j < fin; j++)
             {
@@ -79,12 +79,12 @@ namespace EDDemo.Metodos_de_ordenamiento
                 }
             }
 
-            // Intercambia el pivote a su posición correcta
+           
             int tempPivote = array[i + 1];
             array[i + 1] = array[fin];
             array[fin] = tempPivote;
 
-            return i + 1; // Retorna la posición del pivote
+            return i + 1; 
         }
 
 
@@ -132,10 +132,10 @@ namespace EDDemo.Metodos_de_ordenamiento
             {
                 if (arreglo[i] == valor)
                 {
-                    return i; // Retorna el índice del elemento encontrado
+                    return i; 
                 }
             }
-            return -1; // Retorna -1 si no se encuentra
+            return -1; 
         }
         public int BusquedaSecuencial(int[] array, int valor)
         {
@@ -144,10 +144,10 @@ namespace EDDemo.Metodos_de_ordenamiento
                 {
                     if (array[i] == valor)
                     {
-                        return i; // Devuelve el índice si el elemento es encontrado
+                        return i; 
                     }
                 }
-                return -1; // Devuelve -1 si no se encuentra el elemento
+                return -1; 
             }
         }
         public int? BusquedaHash(Dictionary<int, string> diccionario, string valor)
@@ -156,10 +156,10 @@ namespace EDDemo.Metodos_de_ordenamiento
             {
                 if (kvp.Value.Equals(valor, StringComparison.OrdinalIgnoreCase))
                 {
-                    return kvp.Key; // Retorna la clave (hash) si lo encuentra
+                    return kvp.Key; 
                 }
             }
-            return null; // Retorna null si no se encuentra
+            return null; 
         }
 
 
