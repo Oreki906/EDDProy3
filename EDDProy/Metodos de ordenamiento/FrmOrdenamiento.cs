@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -56,14 +57,22 @@ namespace EDDemo.Metodos_de_ordenamiento
                lbOrden.Items.Add(valor);
             }
         }
-
+        public Dictionary<int, int> hashTable;
+        public Dictionary<int, int> CrearHashTable(int[] array)
+        {
+            return array
+                .Select((valor, indice) => new { valor, indice })
+                .ToDictionary(x => x.valor, x => x.indice);
+        }
         private void cbTamaño_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (int.TryParse(cbTamaño.SelectedItem.ToString(), out int tam))
             {
                 array = new int[tam];
+
                 actual = 0;
                 cbnumb.Clear();
+                hashTable = CrearHashTable(array);
                 MessageBox.Show("tamaño definido");
             }
             else
@@ -90,7 +99,9 @@ namespace EDDemo.Metodos_de_ordenamiento
                 MessageBox.Show("lleno");
                 return;
             }
-            if(int.TryParse(cbnumb.Text, out int numero))
+            string dato = cbnumb.Text;
+            if (!string.IsNullOrEmpty(dato))
+                if (int.TryParse(cbnumb.Text, out int numero))
             {
                 array[actual] = numero;
                 actual++;
@@ -150,6 +161,106 @@ namespace EDDemo.Metodos_de_ordenamiento
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnLineal_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(cbTamaño.Text, out int busc))
+            {
+                try
+                {
+                  
+                    int indice = clas.BusquedaLineal(array, busc);
+
+                    
+                    if (indice >= 0)
+                    {
+                        MessageBox.Show($"Elemento encontrado en índice: {indice}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Elemento no encontrado.");
+                    }
+
+                    // Llama a la función mostrar para actualizar la vista
+                    mostrar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingresa un número válido.");
+            }
+        }
+
+        private void btnSecuencial_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(cbnumb.Text))
+            {
+                string busc = cbnumb.Text; // Obtiene el valor a buscar
+                try
+                {
+                    int indice = clas.BusquedaSecuencial(array, busc); // Busca el valor
+
+                    if (indice >= 0)
+                    {
+                        MessageBox.Show($"Elemento encontrado en índice: {indice}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Elemento no encontrado.");
+                    }
+
+                    mostrar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingresa un dato válido.");
+            }
+        }
+
+        private void btnHash_Click(object sender, EventArgs e)
+        {
+            if (hashTable == null || hashTable.Count == 0)
+            {
+                MessageBox.Show("La tabla hash no está generada. Asegúrate de definir el arreglo primero.");
+                return;
+            }
+
+            if (int.TryParse(cbTamaño.Text, out int busc))
+            {
+                try
+                {
+                    // Busca el valor en la tabla hash
+                    if (hashTable.TryGetValue(busc, out int indice))
+                    {
+                        MessageBox.Show($"Elemento encontrado en índice: {indice}");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Elemento no encontrado.");
+                    }
+
+                    
+                    mostrar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, ingresa un número válido.");
             }
         }
     }

@@ -219,7 +219,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(640, 360);
+            this.ClientSize = new System.Drawing.Size(944, 467);
             this.Controls.Add(this.btTorre);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnBusqueda);

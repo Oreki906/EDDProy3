@@ -126,6 +126,39 @@ namespace EDDemo.Metodos_de_ordenamiento
             for (int i = 0;i < n;i++)
                 array[i] = output[i];
         }
+        public int BusquedaLineal(int[] arreglo, int valor)
+        {
+            for (int i = 0; i < arreglo.Length; i++)
+            {
+                if (arreglo[i] == valor)
+                {
+                    return i; // Retorna el índice del elemento encontrado
+                }
+            }
+            return -1; // Retorna -1 si no se encuentra
+        }
+        public int BusquedaSecuencial(string[] arreglo, string valor)
+        {
+            for (int i = 0; i < arreglo.Length; i++)
+            {
+                if (arreglo[i].Equals(valor, StringComparison.OrdinalIgnoreCase))
+                {
+                    return i; // Índice del elemento encontrado
+                }
+            }
+            return -1; // Retorna -1 si no se encuentra
+        }
+        public int? BusquedaHash(Dictionary<int, string> diccionario, string valor)
+        {
+            foreach (var kvp in diccionario)
+            {
+                if (kvp.Value.Equals(valor, StringComparison.OrdinalIgnoreCase))
+                {
+                    return kvp.Key; // Retorna la clave (hash) si lo encuentra
+                }
+            }
+            return null; // Retorna null si no se encuentra
+        }
 
 
 

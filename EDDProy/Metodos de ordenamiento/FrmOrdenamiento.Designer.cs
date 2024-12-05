@@ -36,6 +36,11 @@
             this.btnShell = new System.Windows.Forms.Button();
             this.btnQuickSort = new System.Windows.Forms.Button();
             this.btnRadix = new System.Windows.Forms.Button();
+            this.btnLineal = new System.Windows.Forms.Button();
+            this.btnSecuencial = new System.Windows.Forms.Button();
+            this.btnHash = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCrearLista
@@ -125,11 +130,64 @@
             this.btnRadix.UseVisualStyleBackColor = true;
             this.btnRadix.Click += new System.EventHandler(this.btnRadix_Click);
             // 
+            // btnLineal
+            // 
+            this.btnLineal.Location = new System.Drawing.Point(439, 75);
+            this.btnLineal.Name = "btnLineal";
+            this.btnLineal.Size = new System.Drawing.Size(134, 42);
+            this.btnLineal.TabIndex = 19;
+            this.btnLineal.Text = "Busqueda Lineal";
+            this.btnLineal.UseVisualStyleBackColor = true;
+            this.btnLineal.Click += new System.EventHandler(this.btnLineal_Click);
+            // 
+            // btnSecuencial
+            // 
+            this.btnSecuencial.Location = new System.Drawing.Point(441, 138);
+            this.btnSecuencial.Name = "btnSecuencial";
+            this.btnSecuencial.Size = new System.Drawing.Size(131, 46);
+            this.btnSecuencial.TabIndex = 20;
+            this.btnSecuencial.Text = "Busqueda secuancial";
+            this.btnSecuencial.UseVisualStyleBackColor = true;
+            this.btnSecuencial.Click += new System.EventHandler(this.btnSecuencial_Click);
+            // 
+            // btnHash
+            // 
+            this.btnHash.Location = new System.Drawing.Point(442, 197);
+            this.btnHash.Name = "btnHash";
+            this.btnHash.Size = new System.Drawing.Size(129, 39);
+            this.btnHash.TabIndex = 21;
+            this.btnHash.Text = "busqueda Hash";
+            this.btnHash.UseVisualStyleBackColor = true;
+            this.btnHash.Click += new System.EventHandler(this.btnHash_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 32);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "tamaño o numero\r\na buscar";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(147, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 20);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "arreglo";
+            // 
             // FrmOrdenamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnHash);
+            this.Controls.Add(this.btnSecuencial);
+            this.Controls.Add(this.btnLineal);
             this.Controls.Add(this.btnRadix);
             this.Controls.Add(this.btnQuickSort);
             this.Controls.Add(this.btnShell);
@@ -155,5 +213,10 @@
         private System.Windows.Forms.Button btnShell;
         private System.Windows.Forms.Button btnQuickSort;
         private System.Windows.Forms.Button btnRadix;
+        private System.Windows.Forms.Button btnLineal;
+        private System.Windows.Forms.Button btnSecuencial;
+        private System.Windows.Forms.Button btnHash;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

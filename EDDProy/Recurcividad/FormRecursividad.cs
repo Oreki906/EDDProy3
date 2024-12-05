@@ -24,43 +24,42 @@ namespace EDDemo.Recurcividad
             btnTamano.Visible = false;
             lblObj.Visible = false;
             cbObjetivo.Visible = false;
+            listBox1.Visible = false;
 
         }
 
 
         private void btnExponente_Click(object sender, EventArgs e)
         {
-            lblVariable1.Text = ("");
-            lblVariable1.Text = ("base");
-            lblVariable2.Text = ("");
-            lblVariable2.Text = ("exponente");
-            btnCalcular.Visible = true;
+            lblVariable1.Text = "base";
+            lblVariable2.Text = "exponente";
             lblVariable2.Visible = true;
             cbDato2.Visible = true;
+            btnCalcular.Visible = true;
+
+           
             btnTamano.Visible = false;
             btnAgregar.Visible = false;
             cbObjetivo.Visible = false;
             lblObj.Visible = false;
-
-            btnCalcular.Click -= btnCalcular_Click;
-            btnCalcular.Click += (s, args) => exponente();
-
+            listBox1.Visible = false;
+            calcularActual = exponente;
+            lblMostrar.Text = "";
         }
 
         private void btnFactorial_Click(object sender, EventArgs e)
         {
-            lblVariable1.Text = ("");
-            lblVariable1.Text = ("numero");
+            lblVariable1.Text = "numero";
             lblVariable2.Visible = false;
             cbDato2.Visible = false;
             btnCalcular.Visible = true;
-
-            btnCalcular.Click -= btnCalcular_Click;
-            btnCalcular.Click += (s, args) => factorial();
+            listBox1.Visible = false;
             btnTamano.Visible = false;
             btnAgregar.Visible = false;
             cbObjetivo.Visible = false;
             lblObj.Visible = false;
+            lblMostrar.Text = "";
+            calcularActual = factorial;
 
         }
 
@@ -104,9 +103,17 @@ namespace EDDemo.Recurcividad
                 }
             }
         }
+        private Action calcularActual;
         public void btnCalcular_Click(object sender, EventArgs e)
         {
-            exponente();
+            if (calcularActual != null)
+            {
+                calcularActual(); // Ejecutar la operación actual
+            }
+            else
+            {
+                MessageBox.Show("No hay ninguna operación seleccionada.");
+            }
         }
 
         private void btnSuma_Click(object sender, EventArgs e)
@@ -120,8 +127,9 @@ namespace EDDemo.Recurcividad
             cbDato2.Visible = true;
             btnTamano.Visible = true;
             btnAgregar.Visible = true;
-            btnCalcular.Click -= btnCalcular_Click;
-            btnCalcular.Click += (s, args) => Suma();
+            calcularActual = Suma;
+            listBox1.Visible = false;
+            lblMostrar.Text = "";
         }
 
         private void Suma()
@@ -231,12 +239,13 @@ namespace EDDemo.Recurcividad
             cbDato2.Visible = false;
             btnCalcular.Visible = true;
 
-            btnCalcular.Click -= btnCalcular_Click;
-            btnCalcular.Click += (s, args) => fib();
+            listBox1.Visible = false;
             btnTamano.Visible = false;
             btnAgregar.Visible = false;
             cbObjetivo.Visible = false;
             lblObj.Visible = false;
+            calcularActual = fib;
+            lblMostrar.Text = "";
         }
 
         private void Buscar()
@@ -279,16 +288,17 @@ namespace EDDemo.Recurcividad
             lblVariable1.Text = ("");
             lblVariable1.Text = ("tamano");
             lblVariable2.Text = ("");
-            lblVariable2.Text = ("numero y busqueda");
+            lblVariable2.Text = ("numero");
             btnCalcular.Visible = true;
             lblVariable2.Visible = true;
             cbDato2.Visible = true;
             btnTamano.Visible = true;
             btnAgregar.Visible = true;
-            btnCalcular.Click -= btnCalcular_Click;
-            btnCalcular.Click += (s, args) => Buscar();
+            calcularActual = Buscar;
             cbObjetivo.Visible = true;
             lblObj.Visible = true;
+            listBox1.Visible = false;
+            lblMostrar.Text = "";
         }
         private void hanoi()
         {
@@ -313,7 +323,19 @@ namespace EDDemo.Recurcividad
 
         private void btTorre_Click(object sender, EventArgs e)
         {
-            
+            lblVariable1.Text = ("");
+            lblVariable1.Text = ("numero");
+            lblVariable2.Visible = false;
+            cbDato2.Visible = false;
+            btnCalcular.Visible = true;
+
+            listBox1.Visible = true;
+            btnTamano.Visible = false;
+            btnAgregar.Visible = false;
+            cbObjetivo.Visible = false;
+            lblObj.Visible = false;
+            calcularActual = hanoi;
+            lblMostrar.Text = "";
         }
     }
 }
