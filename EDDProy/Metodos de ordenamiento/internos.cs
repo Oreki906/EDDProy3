@@ -137,16 +137,18 @@ namespace EDDemo.Metodos_de_ordenamiento
             }
             return -1; // Retorna -1 si no se encuentra
         }
-        public int BusquedaSecuencial(string[] arreglo, string valor)
+        public int BusquedaSecuencial(int[] array, int valor)
         {
-            for (int i = 0; i < arreglo.Length; i++)
             {
-                if (arreglo[i].Equals(valor, StringComparison.OrdinalIgnoreCase))
+                for (int i = 0; i < array.Length; i++)
                 {
-                    return i; // Índice del elemento encontrado
+                    if (array[i] == valor)
+                    {
+                        return i; // Devuelve el índice si el elemento es encontrado
+                    }
                 }
+                return -1; // Devuelve -1 si no se encuentra el elemento
             }
-            return -1; // Retorna -1 si no se encuentra
         }
         public int? BusquedaHash(Dictionary<int, string> diccionario, string valor)
         {

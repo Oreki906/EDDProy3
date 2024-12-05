@@ -57,13 +57,8 @@ namespace EDDemo.Metodos_de_ordenamiento
                lbOrden.Items.Add(valor);
             }
         }
-        public Dictionary<int, int> hashTable;
-        public Dictionary<int, int> CrearHashTable(int[] array)
-        {
-            return array
-                .Select((valor, indice) => new { valor, indice })
-                .ToDictionary(x => x.valor, x => x.indice);
-        }
+        
+        
         private void cbTamaño_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (int.TryParse(cbTamaño.SelectedItem.ToString(), out int tam))
@@ -72,7 +67,7 @@ namespace EDDemo.Metodos_de_ordenamiento
 
                 actual = 0;
                 cbnumb.Clear();
-                hashTable = CrearHashTable(array);
+               
                 MessageBox.Show("tamaño definido");
             }
             else
@@ -199,12 +194,12 @@ namespace EDDemo.Metodos_de_ordenamiento
 
         private void btnSecuencial_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(cbnumb.Text))
+            if (int.TryParse(cbTamaño.Text, out int buscado))
             {
-                string busc = cbnumb.Text; // Obtiene el valor a buscar
                 try
                 {
-                    int indice = clas.BusquedaSecuencial(array, busc); // Busca el valor
+                    // Realizar la búsqueda secuencial
+                    int indice = clas.BusquedaSecuencial(array, buscado);
 
                     if (indice >= 0)
                     {
@@ -215,42 +210,7 @@ namespace EDDemo.Metodos_de_ordenamiento
                         MessageBox.Show("Elemento no encontrado.");
                     }
 
-                    mostrar();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Por favor, ingresa un dato válido.");
-            }
-        }
-
-        private void btnHash_Click(object sender, EventArgs e)
-        {
-            if (hashTable == null || hashTable.Count == 0)
-            {
-                MessageBox.Show("La tabla hash no está generada. Asegúrate de definir el arreglo primero.");
-                return;
-            }
-
-            if (int.TryParse(cbTamaño.Text, out int busc))
-            {
-                try
-                {
-                    // Busca el valor en la tabla hash
-                    if (hashTable.TryGetValue(busc, out int indice))
-                    {
-                        MessageBox.Show($"Elemento encontrado en índice: {indice}");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Elemento no encontrado.");
-                    }
-
-                    
+                    // Actualizar la vista con el método mostrar()
                     mostrar();
                 }
                 catch (Exception ex)
@@ -262,6 +222,11 @@ namespace EDDemo.Metodos_de_ordenamiento
             {
                 MessageBox.Show("Por favor, ingresa un número válido.");
             }
+        }
+
+        private void btnHash_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }
